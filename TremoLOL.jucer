@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="Yqfn6U" name="TremoLOL" projectType="audioplug" displaySplashScreen="1"
+              jucerFormatVersion="1" companyName="Squidsonics">
+  <MAINGROUP id="nlNTX8" name="TremoLOL">
+    <GROUP id="{4051DC22-94B8-76F6-D7BC-1F5800C86CDB}" name="Source">
+      <FILE id="wyLegB" name="ControlsPanel.cpp" compile="1" resource="0"
+            file="Source/ControlsPanel.cpp"/>
+      <FILE id="roS0MH" name="ControlsPanel.h" compile="0" resource="0" file="Source/ControlsPanel.h"/>
+      <FILE id="aIqGvG" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/CustomLookAndFeel.cpp"/>
+      <FILE id="pAgD8K" name="CustomLookAndFeel.h" compile="0" resource="0"
+            file="Source/CustomLookAndFeel.h"/>
+      <FILE id="AqJ5IY" name="HelpPanel.cpp" compile="1" resource="0" file="Source/HelpPanel.cpp"/>
+      <FILE id="k6GzcL" name="HelpPanel.h" compile="0" resource="0" file="Source/HelpPanel.h"/>
+      <FILE id="crTndd" name="KnobsPanel.cpp" compile="1" resource="0" file="Source/KnobsPanel.cpp"/>
+      <FILE id="igwgQ0" name="KnobsPanel.h" compile="0" resource="0" file="Source/KnobsPanel.h"/>
+      <FILE id="wOqaAd" name="LogoPanel.cpp" compile="1" resource="0" file="Source/LogoPanel.cpp"/>
+      <FILE id="PIrXHA" name="LogoPanel.h" compile="0" resource="0" file="Source/LogoPanel.h"/>
+      <FILE id="TEPH9U" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="KAYLk7" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="QsTqrR" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="aHGeVC" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="nO0BUG" name="PresetsPanel.cpp" compile="1" resource="0"
+            file="Source/PresetsPanel.cpp"/>
+      <FILE id="GMeexV" name="PresetsPanel.h" compile="0" resource="0" file="Source/PresetsPanel.h"/>
+      <FILE id="yqTUOE" name="RhythmPanel.cpp" compile="1" resource="0" file="Source/RhythmPanel.cpp"/>
+      <FILE id="qsqmnS" name="RhythmPanel.h" compile="0" resource="0" file="Source/RhythmPanel.h"/>
+      <FILE id="BzUpVJ" name="WaveformPanel.cpp" compile="1" resource="0"
+            file="Source/WaveformPanel.cpp"/>
+      <FILE id="rmufpy" name="WaveformPanel.h" compile="0" resource="0" file="Source/WaveformPanel.h"/>
+    </GROUP>
+    <FILE id="LQzhvp" name="Futura.ttc" compile="0" resource="1" file="/System/Library/Fonts/Supplemental/Futura.ttc"/>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="TremoLOL"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="TremoLOL"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>
