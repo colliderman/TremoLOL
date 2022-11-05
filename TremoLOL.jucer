@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Yqfn6U" name="TremoLOL" projectType="audioplug" displaySplashScreen="1"
-              jucerFormatVersion="1" companyName="Squidsonics">
+              jucerFormatVersion="1" companyName="Squidsonics" version="0.0.1">
   <MAINGROUP id="nlNTX8" name="TremoLOL">
     <GROUP id="{4051DC22-94B8-76F6-D7BC-1F5800C86CDB}" name="Source">
       <FILE id="wyLegB" name="ControlsPanel.cpp" compile="1" resource="0"
@@ -35,7 +35,8 @@
     </GROUP>
     <FILE id="LQzhvp" name="Futura.ttc" compile="0" resource="1" file="/System/Library/Fonts/Supplemental/Futura.ttc"/>
   </MAINGROUP>
-  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"
+               JUCE_DISABLE_COREGRAPHICS_FONT_SMOOTHING="1"/>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>

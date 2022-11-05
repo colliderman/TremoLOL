@@ -54,8 +54,8 @@ private:
     
         //Label pluginNameLabel;
     //TextEditor logo;
-    TextLayout logo;
-    AttributedString logoString;
+    //TextLayout logo;
+    //AttributedString logoString;
 //    Slider speedKnob;
 //    Slider depthKnob;
     

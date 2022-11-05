@@ -26,8 +26,8 @@ TremoLOLAudioProcessorEditor::TremoLOLAudioProcessorEditor (TremoLOLAudioProcess
     //customLookAndFeel.setDefaultSansSerifTypefaceName("Futura");
     myFont.setHeight(84.0f);
     
-    createLogoString();
-    logo.createLayout(logoString, 500.0f);
+    //createLogoString();
+    //logo.createLayout(logoString, 500.0f);
     
 //    addAndMakeVisible(pluginNameLabel);
 //    pluginNameLabel.setText ("TremoLOL", juce::dontSendNotification);
@@ -78,9 +78,9 @@ void TremoLOLAudioProcessorEditor::paint (Graphics& g)
     g.setColour(Colours::blue);
     //g.fillRect(pluginNameLabel.getBounds());
     
-    auto area = getLocalBounds();
-    logo.draw(g, area.toFloat());
-    g.drawRect(area);
+//    auto area = getLocalBounds();
+//    logo.draw(g, area.toFloat());
+//    g.drawRect(area);
 }
 
 void TremoLOLAudioProcessorEditor::resized()
@@ -130,6 +130,6 @@ void TremoLOLAudioProcessorEditor::createLogoString()
     //AttributedString logoString;
 //    logoString.append("Tremo", Colours::white);
 //    logoString.append("LOL", Colours::orange);
-    logoString.append("Tremo", myFont, Colours::white);
-    logoString.append("LOL", myFont, Colours::orange);
+    //logoString.append("Tremo", myFont, Colours::white);
+    //logoString.append("LOL", myFont, Colours::orange);
 }

@@ -82,6 +82,11 @@ void KnobsPanel::paint(Graphics &g)
     g.setColour(Colours::blue);
     g.fillRect(speedKnobLabel.getBounds());
     
+    //for debugging
+    Rectangle<float>gainLabelRect(myFont.getStringWidthFloat(gainKnobLabel.getText()), myFont.getHeight());
+    g.setColour(Colours::pink);
+    g.drawRect(gainKnobLabel.getBounds());
+    
 }
 
 void KnobsPanel::resized()
