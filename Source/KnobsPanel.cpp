@@ -140,8 +140,8 @@ void KnobsPanel::resized()
     
     //DBG(speedKnobLabel.getFont().getTypefaceName());
     //DBG(depthKnobLabel.getFont().getTypefaceName());
-    DBG(gainKnobLabel.getFont().getStringWidth(gainKnobLabel.getText()));
-    DBG(gainKnobLabel.getFont().getHeight());
+    //DBG(gainKnobLabel.getFont().getStringWidth(gainKnobLabel.getText()));
+    //DBG(gainKnobLabel.getFont().getHeight());
 
     
 }

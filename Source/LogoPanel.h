@@ -27,7 +27,7 @@ public:
     
     void setText (const String& string, Font& fontToUse, Colour colour);
     
-    void createLayout();
+//    void createLayout();
     
     void setFont (Font& fontToUse);
     

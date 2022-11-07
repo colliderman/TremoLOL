@@ -24,7 +24,10 @@ void Logo::paint (juce::Graphics& g)
 {
     Rectangle<float> area(font.getStringWidthFloat(attString.getText()), font.getHeight());
     
-    textLayout.draw(g, area);
+    attString.setFont(font);
+    attString.draw(g, area);
+    
+    //textLayout.draw(g, area);
     
     //for debugging
 //    g.setColour(Colours::pink);
@@ -33,7 +36,7 @@ void Logo::paint (juce::Graphics& g)
 
 void Logo::resized()
 {
-    
+//    DBG("Hello from Logo resized");
 }
 
 void Logo::setText(const String& string, Font& fontToUse, Colour colour)
@@ -43,17 +46,18 @@ void Logo::setText(const String& string, Font& fontToUse, Colour colour)
     font = fontToUse;
 }
 
-void Logo::createLayout()
-{
-    textLayout.createLayout(attString, font.getStringWidthFloat(attString.getText()));
-}
+//void Logo::createLayout()
+//{
+//    textLayout.createLayout(attString, font.getStringWidthFloat(attString.getText()));
+//}
 
 void Logo::setFont(Font &fontToUse)
 {
     font = fontToUse;
-    attString.setFont(font);
-    textLayout.createLayout(attString, font.getStringWidthFloat(attString.getText()));
-    repaint();
+
+    
+    //textLayout.createLayout(attString, font.getStringWidthFloat(attString.getText()));
+    //repaint();
 }
 
 //==========================================================================
@@ -65,20 +69,17 @@ LogoPanel::LogoPanel()
     myFont.setHeight(84.0f);
     pluginLogo.setText("Tremo", myFont, Colours::white);
     pluginLogo.setText("LOL", myFont, Colours::orange);
-    pluginLogo.createLayout();
     addAndMakeVisible(pluginLogo);
     
     myFont.setHeight(26.0f);
     String version = ProjectInfo::versionString;
     versionLogo.setText("Version " + version, myFont, Colours::white);
-    versionLogo.createLayout();
     addAndMakeVisible(versionLogo);
     
     myFont.setHeight(26.0f); //probably don't need to call this again here..
     websiteLogo.setText("www.", myFont, Colours::white);
     websiteLogo.setText("squidsonics", myFont, Colours::orange);
     websiteLogo.setText(".com", myFont, Colours::white);
-    websiteLogo.createLayout();
     addAndMakeVisible(websiteLogo);
 }
 
@@ -105,20 +106,24 @@ void LogoPanel::paint (juce::Graphics& g)
 //    //for debugging
 //    g.setColour(Colours::pink);
 //    g.drawRect(logoRect);
+//    auto area = pluginLogo.getBounds();
+//    g.setColour(Colours::blue);
+//    g.drawRect(area);
     
 }
 
 void LogoPanel::resized()
 {
-//    auto newFontScaleFactor = (((float)getBounds().getWidth() - 122.0f)/122.0f) + 1.0f;
-    auto newFontScaleFactor = (float)getBounds().getWidth() / 122.0f;
+    auto newFontScaleFactor = (float)getBounds().getHeight() / 122.0f;
+    
     myFont.setHeight(84.0f * newFontScaleFactor);
-    
-//    pluginLogo.setBounds(20, 38, 300, 70);
-    pluginLogo.setBoundsRelative(0.024f, 0.311f, 0.364f, 0.574f);
     pluginLogo.setFont(myFont);
-    
+    pluginLogo.setBoundsRelative(0.024f, 0.311f, 0.364f, 0.574f);
+        
     myFont.setHeight(26.0f * newFontScaleFactor);
-    versionLogo.setBounds(681, 57, 125, 30);
-    websiteLogo.setBounds(605, 84, 200, 30);
+    versionLogo.setFont(myFont);
+    versionLogo.setBoundsRelative(0.826f, 0.467f, 0.151f, 0.221f);
+    
+    websiteLogo.setFont(myFont);
+    websiteLogo.setBoundsRelative(0.734f, 0.689f, 0.243f, 0.221f);
 }
