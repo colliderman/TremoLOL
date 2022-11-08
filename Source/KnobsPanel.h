@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "CustomLookAndFeel.h"
+//#include "CustomLookAndFeel.h"
 
 class KnobsPanel : public Component
 {
@@ -26,10 +26,10 @@ public:
     
 private:
     
-    CustomLookAndFeel customLookAndFeel;
+    //CustomLookAndFeel customLookAndFeel;
     //Font myFont {"Futura", "Medium", 22.0f};
     Font myFont;
-    
+
     Slider speedKnob;
     Slider depthKnob;
     Slider gainKnob;
@@ -37,6 +37,5 @@ private:
     Label speedKnobLabel;
     Label depthKnobLabel;
     Label gainKnobLabel;
-
 
 };

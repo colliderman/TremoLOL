@@ -43,6 +43,7 @@ void ControlsPanel::resized()
     //Get the calculated size of the parent (PluginEditor) window to use to position the children
     auto area = getLocalBounds();
     auto controlPanelWidth = getLocalBounds().getWidth();
+//    auto controlPanelHeight = getLocalBounds().getHeight();
     auto controlMargins = controlPanelWidth * 0.024; //keeps margin proportional to 20px of original 824px width
     
     //Devide the ControlsPanel into 3 sections, maintaining a margin between them

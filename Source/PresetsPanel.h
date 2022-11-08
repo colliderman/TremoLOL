@@ -11,7 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "CustomLookAndFeel.h"
+//#include "CustomLookAndFeel.h"
 
 //==============================================================================
 /*
@@ -27,7 +27,7 @@ public:
 
 private:
     
-    CustomLookAndFeel customLookAndFeel;
+    //CustomLookAndFeel customLookAndFeel;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PresetsPanel)
 };

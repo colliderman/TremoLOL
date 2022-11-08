@@ -14,9 +14,10 @@
 
 CustomLookAndFeel::CustomLookAndFeel()
 {
-    //Typeface::Ptr tface = Typeface::createSystemTypefaceFor(BinaryData::Futura_ttc, BinaryData::Futura_ttcSize);
-    //setDefaultSansSerifTypeface (tface);
-    setDefaultSansSerifTypefaceName("Futura");
+    Typeface::Ptr tface = Typeface::createSystemTypefaceFor(BinaryData::Futura_ttc, BinaryData::Futura_ttcSize);
+    setDefaultSansSerifTypeface (tface);
+    //setDefaultSansSerifTypefaceName("Futura");
+    //mouseEnter = false;
 }
 
 void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, int height, float sliderPos,
@@ -35,13 +36,6 @@ void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, 
     g.setColour(Colour (0xff312D2D));
     g.fillEllipse(rx, ry, rw, rw);
     
-    //outline
-    g.setColour(Colour (0xffDFB98C));
-    //rw * 0.02f is because I want the outline to be the equivalent of 2 pixels
-    //wide relative to default knob size, which is 100 pixels circumfrence.
-    //ie: 100 x 0.02 = 2
-    g.drawEllipse(rx, ry, rw, rw, rw * 0.02f);
-    
     Path p;
     auto pointerLength = radius * 0.68f;
     //rw * 0.06f is because I want the indicator to be the equivalent of 6 pixels
@@ -54,5 +48,20 @@ void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, 
     //pointer
     g.setColour(Colour (0xffD9D9D9));
     g.fillPath (p);
+    
+    //outline
+    if (slider.isMouseOverOrDragging()) {
+        g.setColour(Colour (0xffEACCA8));
+        g.drawEllipse(rx, ry, rw, rw, rw * 0.02f);
+    } else {
+        g.setColour(Colour (0xffDDA666));
+        g.drawEllipse(rx, ry, rw, rw, rw * 0.02f);
+    }
+//    //knob stroke/outline
+//    g.setColour(Colour (0xffDFB98C));
+//    //rw * 0.02f is because I want the outline to be the equivalent of 2 pixels
+//    //wide relative to default knob size, which is 100 pixels circumfrence.
+//    //ie: 100 x 0.02 = 2
+//    g.drawEllipse(rx, ry, rw, rw, rw * 0.02f);
+    
 }
-

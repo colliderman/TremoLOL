@@ -27,7 +27,13 @@ void WaveformPanel::paint (Graphics& g)
     g.setColour(Colour (0xffDA8C30));
     
     //0.1f keeps corner radius constant when resizing
-    g.fillRoundedRectangle(0.0f, 0.0f, getWidth(), getHeight(), (float)getHeight()*0.1f);
+    //g.fillRoundedRectangle(0.0f, 0.0f, getWidth(), getHeight(), (float)getHeight()*0.1f);
+    
+    g.fillRoundedRectangle(getLocalBounds().toFloat(), (float)getHeight()*0.1f);
+    
+//    g.setColour(Colour (0xffDDA666));
+//    
+//    g.drawRoundedRectangle(getLocalBounds().toFloat() * 0.99f, (float)getHeight()*0.1f, (float)getLocalBounds().getHeight() * 0.01f); //2 pixel width
 }
 
 void WaveformPanel::resized()

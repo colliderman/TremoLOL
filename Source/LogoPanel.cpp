@@ -64,7 +64,7 @@ void Logo::setFont(Font &fontToUse)
 
 LogoPanel::LogoPanel()
 {
-    LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
+    //LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
     
     myFont.setHeight(84.0f);
     pluginLogo.setText("Tremo", myFont, Colours::white);

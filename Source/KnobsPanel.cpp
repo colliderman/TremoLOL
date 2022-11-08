@@ -15,7 +15,7 @@ KnobsPanel::KnobsPanel()
     //if this isn't here, font isn't Futura. Thought setting this
     //in PluginEditor constructor would affect this component because
     //it's a child but I guess not..
-    LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
+    //LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
     
     const auto borderSize = BorderSize<int>(0);
     
@@ -88,20 +88,23 @@ void KnobsPanel::paint(Graphics &g)
 //    g.drawRect(gainKnobLabel.getBounds());
 //    g.drawRect(speedKnobLabel.getBounds());
 //    g.drawRect(depthKnobLabel.getBounds());
+    
+//    g.setColour(Colours::blue);
+//    g.drawRect(gainKnob.getBounds());
 }
+
 
 void KnobsPanel::resized()
 {
     auto area = getLocalBounds();
     auto knobsPanelWidthDivided = area.getWidth() / 3;
     auto knobsPanelHeight = area.getHeight();
-    auto knobMarginX = knobsPanelWidthDivided * 0.132f;
-    auto knobMarginY = knobsPanelHeight * 0.25f;
+    auto knobMarginX = knobsPanelWidthDivided * 0.125f;//0.132f
+    auto knobMarginY = knobsPanelHeight * 0.235f;
     
     speedKnob.setBounds(area.removeFromLeft(area.getWidth() / 3).reduced(knobMarginX, knobMarginY));
     depthKnob.setBounds(area.removeFromLeft(area.getWidth() / 2).reduced(knobMarginX, knobMarginY));
     gainKnob.setBounds(area.reduced(knobMarginX, knobMarginY));
-
     
     speedKnobLabel.setBoundsRelative(0.083f, 0.055f, 0.162f, 0.145f);
     depthKnobLabel.setBoundsRelative(0.417f, 0.055f, 0.167f, 0.145f);
@@ -115,5 +118,4 @@ void KnobsPanel::resized()
     gainKnobLabel.setFont(myFont);
     
 }
-
 
