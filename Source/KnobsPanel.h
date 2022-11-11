@@ -37,5 +37,9 @@ private:
     Label speedKnobLabel;
     Label depthKnobLabel;
     Label gainKnobLabel;
+    
+    Label speedKnobValue;
+    Label depthKnobValue;
+    Label gainKnobValue;
 
 };

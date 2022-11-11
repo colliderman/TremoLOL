@@ -65,3 +65,8 @@ void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, 
 //    g.drawEllipse(rx, ry, rw, rw, rw * 0.02f);
     
 }
+
+Label* CustomLookAndFeel::createSliderTextBox(Slider &slider)
+{
+    return createSliderTextBox(slider);
+}

@@ -24,21 +24,31 @@ KnobsPanel::KnobsPanel()
     speedKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     speedKnob.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
 //    speedKnob.setTextBoxStyle(Slider::TextBoxBelow, false, 74, 29);
-//    speedKnob.setTextValueSuffix(" Hz");
-    speedKnob.setRange(0.0f, 1.0f);
+    speedKnob.setTextValueSuffix(" Hz");
+//    speedKnob.setRange(0.0f, 1.0f);
+    auto skr = NormalisableRange<double>(1, 240, 1);
+    speedKnob.setNormalisableRange(skr);
     speedKnob.setValue(speedKnob.getMaximum()/2);
+    
     addAndMakeVisible(speedKnob);
     
     depthKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     depthKnob.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
-    depthKnob.setRange(0.0f, 1.0f);
+    depthKnob.setTextValueSuffix(" %");
+//    depthKnob.setRange(0.0f, 1.0f);
+    auto dkr = NormalisableRange<double>(0, 100, 1);
+    depthKnob.setNormalisableRange(dkr);
     depthKnob.setValue(depthKnob.getMaximum()/2);
     addAndMakeVisible(depthKnob);
     
     gainKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     gainKnob.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
-    gainKnob.setRange(0.0f, 1.0f);
-    gainKnob.setValue(depthKnob.getMaximum()/2);
+    gainKnob.setTextValueSuffix(" dB");
+    auto gkr = NormalisableRange<double>(-30, 30, 0.1);
+    gainKnob.setNormalisableRange(gkr);
+//    gainKnob.setValue(gainKnob.);
+    gainKnob.setValue(0.1);//this is a terrible workaround..
+    //gainKnob.valueChanged();
     addAndMakeVisible(gainKnob);
     
     //Knob Labels
@@ -67,6 +77,39 @@ KnobsPanel::KnobsPanel()
     gainKnobLabel.setBorderSize(borderSize);
     addAndMakeVisible (gainKnobLabel);
     
+    //Value Labels
+    speedKnob.onValueChange = [this] { speedKnobValue.setText(speedKnob.getTextFromValue(speedKnob.getValue()), dontSendNotification); };
+    speedKnobValue.onTextChange = [this] { speedKnob.setValue(speedKnob.getValueFromText(speedKnobValue.getText())); };
+    speedKnobValue.setEditable(true);
+    speedKnobValue.setFont(myFont);
+    speedKnobValue.setColour(Label::textColourId, Colours::white);
+    speedKnobValue.setJustificationType(Justification::centred);
+    speedKnobValue.setMinimumHorizontalScale(1.0f);
+    speedKnobValue.setBorderSize(borderSize);
+    addAndMakeVisible(speedKnobValue);
+    
+    depthKnob.onValueChange = [this] { depthKnobValue.setText(depthKnob.getTextFromValue(depthKnob.getValue()), dontSendNotification); };
+    depthKnobValue.onTextChange = [this] { depthKnob.setValue(depthKnob.getValueFromText(depthKnobValue.getText())); };
+    depthKnobValue.setEditable(true);
+    depthKnobValue.setFont(myFont);
+    depthKnobValue.setColour(Label::textColourId, Colours::white);
+    depthKnobValue.setJustificationType(Justification::centred);
+    depthKnobValue.setMinimumHorizontalScale(1.0f);
+    depthKnobValue.setBorderSize(borderSize);
+    addAndMakeVisible(depthKnobValue);
+    
+     gainKnob.onValueChange = [this] { gainKnobValue.setText(gainKnob.getTextFromValue(gainKnob.getValue()), dontSendNotification); };
+    //gainKnobValue.setText(gainKnob.getTextFromValue(gainKnob.getValue()), dontSendNotification);
+    gainKnobValue.onTextChange = [this] { gainKnob.setValue(gainKnob.getValueFromText(gainKnobValue.getText())); };
+    gainKnobValue.setEditable(true);
+    gainKnobValue.setFont(myFont);
+    gainKnobValue.setColour(Label::textColourId, Colours::white);
+    gainKnobValue.setJustificationType(Justification::centred);
+    gainKnobValue.setMinimumHorizontalScale(1.0f);
+    gainKnobValue.setBorderSize(borderSize);
+    addAndMakeVisible(gainKnobValue);
+    
+    
     setSize(408, 200);
 }
 
@@ -90,7 +133,7 @@ void KnobsPanel::paint(Graphics &g)
 //    g.drawRect(depthKnobLabel.getBounds());
     
 //    g.setColour(Colours::blue);
-//    g.drawRect(gainKnob.getBounds());
+//    g.drawRect(gainKnobValue.getBounds());
 }
 
 
@@ -110,12 +153,20 @@ void KnobsPanel::resized()
     depthKnobLabel.setBoundsRelative(0.417f, 0.055f, 0.167f, 0.145f);
     gainKnobLabel.setBoundsRelative(0.762f, 0.055f, 0.147f, 0.145f);
     
+    speedKnobValue.setBoundsRelative(0.074f, 0.785f, 0.185f, 0.145f);
+    depthKnobValue.setBoundsRelative(0.434f, 0.785f, 0.147f, 0.145f);
+    gainKnobValue.setBoundsRelative(0.73f, 0.785f, 0.211f, 0.145f);
+    
     auto newFontScaleFactor = (float)getBounds().getWidth() / 408.0f;
     myFont.setHeight(28.0f * newFontScaleFactor);
     
     speedKnobLabel.setFont(myFont);
     depthKnobLabel.setFont(myFont);
     gainKnobLabel.setFont(myFont);
+    
+    speedKnobValue.setFont(myFont);
+    depthKnobValue.setFont(myFont);
+    gainKnobValue.setFont(myFont);
     
 }
 
