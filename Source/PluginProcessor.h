@@ -57,8 +57,12 @@ public:
     
 private:
     //==============================================================================
-    AudioParameterFloat * depthParameter;
-    AudioParameterFloat * speedParameter;
+    AudioProcessorValueTreeState parameters;
+    
+    //AudioParameterFloat* depthParameter;
+    //AudioParameterFloat* speedParameter;
+    std::atomic<float>* depthParameter = nullptr;
+    std::atomic<float>* speedParameter = nullptr;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TremoLOLAudioProcessor)
 };

@@ -21,12 +21,24 @@ TremoLOLAudioProcessor::TremoLOLAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
 #endif
+        parameters (*this, nullptr, Identifier ("APVTS"),
+                    {
+            std::make_unique<AudioParameterFloat> (ParameterID{"depth", 1},
+                                                               "Depth",
+                                                               0.1f,
+                                                               1.0f,
+                                                               0.5f),
+            std::make_unique<AudioParameterFloat>(ParameterID{"speed", 1},
+                                                              "Speed",
+                                                              0.1f,
+                                                              1.0f,
+                                                              0.2f)
+        })
 {
-    addParameter(depthParameter = new AudioParameterFloat({"depth", 1}, "Depth", 0.1, 1.0, 0.5));
-    addParameter(speedParameter = new AudioParameterFloat({"speed", 1}, "Speed", 0.1, 1.0, 0.2));
-    
+    depthParameter = parameters.getRawParameterValue ("depth");
+    speedParameter = parameters.getRawParameterValue ("speed");
 }
 
 TremoLOLAudioProcessor::~TremoLOLAudioProcessor()
@@ -156,9 +168,106 @@ void TremoLOLAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffe
     // interleaved by keeping the same state.
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
-        //auto* channelData = buffer.getWritePointer (channel);
+        auto* channelData = buffer.getWritePointer (channel);
         // ..do something to the data...
+//        auto curSampleRate = getSampleRate();
+//        //auto rate = speedParameter->AudioProcessorParameter::getValue();
+//        //auto depth = depthParameter->AudioProcessorParameter::getValue();
+//        float rate = 0.25f;
+//        float depth = 0.5f;
+//        
+//        //initialize oscillator state
+//        float phase = 0.0f;
+//        float phaseIncrement = rate / (float)curSampleRate;
+//        
+//        // apply tremolo effect to each sample
+//        for (int i = 0; i < buffer.getNumSamples(); i++)
+//        {
+//            // calculate tremolo amount based on oscillator state
+//            float tremoloAmount = (1.0f + depth * std::sin(phase)) / 2.0f;
+//            
+//            // apply tremolo amount to sample
+//            channelData[i] *= tremoloAmount;
+//            
+//            // increment oscillator phase
+//            phase += phaseIncrement;
+//        }
     }
+    /*Tremolo algorithm from ChatGPT!
+     void tremolo(float* samples, int numSamples, float depth, float rate) {
+       // initialize oscillator state
+       float phase = 0.0f;
+       float phaseIncrement = rate / 44100.0f;
+
+       // apply tremolo effect to each sample
+       for (int i = 0; i < numSamples; i++) {
+         // calculate tremolo amount based on oscillator state
+         float tremoloAmount = (1.0f + depth * std::sin(phase)) / 2.0f;
+
+         // apply tremolo amount to sample
+         samples[i] *= tremoloAmount;
+
+         // increment oscillator phase
+         phase += phaseIncrement;
+       }
+     }
+     
+     //triangle wave function!
+     #include <math.h>
+
+     // generate a triangle wave with a range of 0 to 1
+     float triangleWave(float phase) {
+       // scale the sine wave from -1 to 1 to 0 to 1
+       float sineWave = (sin(phase) + 1.0f) / 2.0f;
+
+       // offset the sine wave to create a triangle wave
+       return sineWave < 0.5f ? 2.0f * sineWave : 2.0f * (1.0f - sineWave);
+     }
+
+    //tremolo function from above, but now uses triangle wave function
+     void tremolo(float* samples, int numSamples, float depth, float rate) {
+       // initialize oscillator state
+       float phase = 0.0f;
+       float phaseIncrement = rate / 44100.0f;
+
+       // apply tremolo effect to each sample
+       for (int i = 0; i < numSamples; i++) {
+         // calculate tremolo amount based on oscillator state
+         float tremoloAmount = (1.0f + depth * triangleWave(phase)) / 2.0f;
+
+         // apply tremolo amount to sample
+         samples[i] *= tremoloAmount;
+
+         // increment oscillator phase
+         phase += phaseIncrement;
+       }
+     }
+
+     //And here's the square wave...
+     // generate a square wave with a range of 0 to 1
+     float squareWave(float phase) {
+       return sin(phase) > 0 ? 1.0f : 0.0f;
+     }
+
+     void tremolo(float* samples, int numSamples, float depth, float rate) {
+       // initialize oscillator state
+       float phase = 0.0f;
+       float phaseIncrement = rate / 44100.0f;
+
+       // apply tremolo effect to each sample
+       for (int i = 0; i < numSamples; i++) {
+         // calculate tremolo amount based on oscillator state
+         float tremoloAmount = (1.0f + depth * squareWave(phase)) / 2.0f;
+
+         // apply tremolo amount to sample
+         samples[i] *= tremoloAmount;
+
+         // increment oscillator phase
+         phase += phaseIncrement;
+       }
+     }
+
+*/
 }
 
 //==============================================================================
@@ -169,7 +278,7 @@ bool TremoLOLAudioProcessor::hasEditor() const
 
 AudioProcessorEditor* TremoLOLAudioProcessor::createEditor()
 {
-    return new TremoLOLAudioProcessorEditor (*this);
+    return new TremoLOLAudioProcessorEditor (*this, parameters);
     //return new GenericAudioProcessorEditor (*this);
 }
 

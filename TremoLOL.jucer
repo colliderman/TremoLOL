@@ -13,6 +13,8 @@
             file="Source/CustomLookAndFeel.h"/>
       <FILE id="AqJ5IY" name="HelpPanel.cpp" compile="1" resource="0" file="Source/HelpPanel.cpp"/>
       <FILE id="k6GzcL" name="HelpPanel.h" compile="0" resource="0" file="Source/HelpPanel.h"/>
+      <FILE id="XUstyg" name="Knobs.cpp" compile="1" resource="0" file="Source/Knobs.cpp"/>
+      <FILE id="kxTXr1" name="Knobs.h" compile="0" resource="0" file="Source/Knobs.h"/>
       <FILE id="crTndd" name="KnobsPanel.cpp" compile="1" resource="0" file="Source/KnobsPanel.cpp"/>
       <FILE id="igwgQ0" name="KnobsPanel.h" compile="0" resource="0" file="Source/KnobsPanel.h"/>
       <FILE id="wOqaAd" name="LogoPanel.cpp" compile="1" resource="0" file="Source/LogoPanel.cpp"/>

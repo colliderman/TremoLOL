@@ -12,7 +12,8 @@
 #include "ControlsPanel.h"
 
 //==============================================================================
-ControlsPanel::ControlsPanel()
+ControlsPanel::ControlsPanel (AudioProcessorValueTreeState& vts)
+: valueTreeState (vts)
 {
     addAndMakeVisible(waveformPanel);
     addAndMakeVisible(knobsPanel);
@@ -47,8 +48,8 @@ void ControlsPanel::resized()
     auto controlMargins = controlPanelWidth * 0.024; //keeps margin proportional to 20px of original 824px width
     
     //Devide the ControlsPanel into 3 sections, maintaining a margin between them
-    waveformPanel.setBounds(area.removeFromLeft(area.getWidth() * 0.240f).reduced(controlMargins, 0));
-    rhythmPanel.setBounds(area.removeFromRight(area.getWidth() * 0.316f).reduced(controlMargins, 0));
+    waveformPanel.setBounds(area.removeFromLeft(area.getWidth() * 0.252f).reduced(controlMargins, 0));
+    rhythmPanel.setBounds(area.removeFromRight(area.getWidth() * 0.338f).reduced(controlMargins, 0));
     knobsPanel.setBounds(area);
 
 }

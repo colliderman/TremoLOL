@@ -27,7 +27,8 @@
 class TremoLOLAudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
-    TremoLOLAudioProcessorEditor (TremoLOLAudioProcessor&);
+    //TremoLOLAudioProcessorEditor (TremoLOLAudioProcessor&);
+    TremoLOLAudioProcessorEditor (TremoLOLAudioProcessor&, AudioProcessorValueTreeState&);
     ~TremoLOLAudioProcessorEditor();
 
     //==============================================================================
@@ -36,11 +37,14 @@ public:
     void resized() override;
     
     void createLogoString();
+    //AudioProcessorValueTreeState& getValueTreeState();
 
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     TremoLOLAudioProcessor& processor;
+    
+    AudioProcessorValueTreeState& valueTreeState;
 
     //Image tremoloTop;
     Font myFont;
@@ -48,7 +52,7 @@ private:
     CustomLookAndFeel customLookAndFeel;
     
     LogoPanel       logoPanel;
-    ControlsPanel   controlsPanel;
+    ControlsPanel   controlsPanel {valueTreeState};
     PresetsPanel    presetsPanel;
     HelpPanel       helpPanel;
     
@@ -62,6 +66,7 @@ private:
 protected:
     
     float aspectRatio;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TremoLOLAudioProcessorEditor)
 };

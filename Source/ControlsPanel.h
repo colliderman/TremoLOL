@@ -22,16 +22,17 @@
 class ControlsPanel  : public juce::Component
 {
 public:
-    ControlsPanel();
+    ControlsPanel (AudioProcessorValueTreeState&);
     ~ControlsPanel() override;
 
     void paint (juce::Graphics&) override;
     void resized() override;
 
 private:
+    AudioProcessorValueTreeState& valueTreeState;
     
     WaveformPanel   waveformPanel;
-    KnobsPanel      knobsPanel;
+    KnobsPanel      knobsPanel {valueTreeState};
     RhythmPanel     rhythmPanel;
     
 

@@ -17,15 +17,17 @@
 class KnobsPanel : public Component
 {
 public:
-    KnobsPanel();
+    KnobsPanel (AudioProcessorValueTreeState&);
     ~KnobsPanel();
+    
+    typedef AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
     
     void paint (Graphics&) override;
     void resized () override;
     
     
 private:
-    
+    AudioProcessorValueTreeState& valueTreeState;
     //CustomLookAndFeel customLookAndFeel;
     //Font myFont {"Futura", "Medium", 22.0f};
     Font myFont;
@@ -41,5 +43,8 @@ private:
     Label speedKnobValue;
     Label depthKnobValue;
     Label gainKnobValue;
+    
+    std::unique_ptr<SliderAttachment> depthAttachment;
+    std::unique_ptr<SliderAttachment> speedAttachment;
 
 };

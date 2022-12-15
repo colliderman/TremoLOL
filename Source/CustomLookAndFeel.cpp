@@ -66,7 +66,7 @@ void CustomLookAndFeel::drawRotarySlider (Graphics& g, int x, int y, int width, 
     
 }
 
-Label* CustomLookAndFeel::createSliderTextBox(Slider &slider)
-{
-    return createSliderTextBox(slider);
-}
+//Label* CustomLookAndFeel::createSliderTextBox(Slider &slider)
+//{
+//    return createSliderTextBox(slider);
+//}

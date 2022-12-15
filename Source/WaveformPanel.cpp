@@ -14,6 +14,18 @@
 //==============================================================================
 WaveformPanel::WaveformPanel()
 {
+    const auto borderSize = BorderSize<int>(0);
+
+    myFont.setHeight(28.0f);
+    
+    shapeLabel.setText ("SHAPE", juce::dontSendNotification);
+    shapeLabel.setFont(myFont);
+    shapeLabel.setColour (juce::Label::textColourId, juce::Colours::white);
+    shapeLabel.setJustificationType (juce::Justification::verticallyCentred);
+    shapeLabel.setMinimumHorizontalScale(1.0f);
+    shapeLabel.setBorderSize(borderSize);
+    addAndMakeVisible (shapeLabel);
+    
     setSize(168, 200);
 
 }
@@ -40,5 +52,11 @@ void WaveformPanel::resized()
 {
     // This method is where you should set the bounds of any child
     // components that your component contains..
+    //DBG(getBounds().getWidth());
+    shapeLabel.setBoundsRelative(0.290f, 0.055, 0.414f, 0.145f);
 
+    auto newFontScaleFactor = (float)getBounds().getWidth() / 168.0f;
+    myFont.setHeight(28.0f * newFontScaleFactor);
+    
+    shapeLabel.setFont(myFont);
 }

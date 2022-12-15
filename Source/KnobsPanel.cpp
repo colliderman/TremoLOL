@@ -10,13 +10,13 @@
 
 #include "KnobsPanel.h"
 
-KnobsPanel::KnobsPanel()
+KnobsPanel::KnobsPanel (AudioProcessorValueTreeState& vts)
+: valueTreeState (vts)
 {
     //if this isn't here, font isn't Futura. Thought setting this
     //in PluginEditor constructor would affect this component because
     //it's a child but I guess not..
     //LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
-    
     const auto borderSize = BorderSize<int>(0);
     
     myFont.setHeight(28.0f);
@@ -40,6 +40,8 @@ KnobsPanel::KnobsPanel()
     depthKnob.setNormalisableRange(dkr);
     depthKnob.setValue(depthKnob.getMaximum()/2);
     addAndMakeVisible(depthKnob);
+    
+    depthAttachment.reset (new SliderAttachment (valueTreeState, "depth", depthKnob));
     
     gainKnob.setSliderStyle(Slider::RotaryHorizontalVerticalDrag);
     gainKnob.setTextBoxStyle(Slider::NoTextBox, 0, 0, 0);
